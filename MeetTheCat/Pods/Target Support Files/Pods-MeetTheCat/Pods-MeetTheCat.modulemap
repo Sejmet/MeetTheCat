@@ -1,0 +1,6 @@
+framework module Pods_MeetTheCat {
+  umbrella header "Pods-MeetTheCat-umbrella.h"
+
+  export *
+  module * { export * }
+}
