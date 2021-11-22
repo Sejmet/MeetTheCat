@@ -77,31 +77,34 @@ class CatCardView: UIView {
         let card = sender.view as! CatCardView
         let point = sender.translation(in: self)
         let centerOfParentContainer = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
-        card.center = CGPoint(x: centerOfParentContainer.x + point.x, y: centerOfParentContainer.y + point.y)
         
-        let distanceFromCenter = ((UIScreen.main.bounds.width / 2) - card.center.x)
-        divisor = ((UIScreen.main.bounds.width / 2) / 0.61)
+        let movingX = centerOfParentContainer.x + point.x
+        let movingY = centerOfParentContainer.y + point.y
+        card.center = CGPoint(x: movingX, y: movingY)
+        
+        let distanceFromCenterInX = centerOfParentContainer.x - card.center.x
         
         switch sender.state {
         case .ended:
-            if distanceFromCenter > 100 {
+            if distanceFromCenterInX > 100 {
                 //Discard
-                swipeCardDelegate?.swipeDidEnd(on: card, liked: false)
-                UIView.animate(withDuration: 0.2) {
-                    card.center = CGPoint(x: centerOfParentContainer.x + point.x + 200, y: centerOfParentContainer.y + point.y + 75)
-                    card.alpha = 0
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) {
+                    card.center = CGPoint(x: movingX - 200, y: movingY + 45)
                     self.layoutIfNeeded()
+                } completion: { finished in
+                    self.swipeCardDelegate?.swipeDidEnd(on: card, liked: false)
                 }
-                return
-            } else if distanceFromCenter < -100 {
-                //Like
-                swipeCardDelegate?.swipeDidEnd(on: card, liked: true)
                 
-                UIView.animate(withDuration: 0.2) {
-                    card.center = CGPoint(x: centerOfParentContainer.x + point.x - 200, y: centerOfParentContainer.y + point.y + 75)
-                    card.alpha = 0
+                return
+            } else if distanceFromCenterInX < -100 {
+                //Like
+                UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut) {
+                    card.center = CGPoint(x: movingX + 200, y: movingY + 45)
                     self.layoutIfNeeded()
+                } completion: { finished in
+                    self.swipeCardDelegate?.swipeDidEnd(on: card, liked: true)
                 }
+                
                 return
             }
             UIView.animate(withDuration: 0.2) {
@@ -111,10 +114,10 @@ class CatCardView: UIView {
                 self.layoutIfNeeded()
             }
         case .changed:
-            if distanceFromCenter > 80 {
+            if distanceFromCenterInX > 80 {
                 likeOrDislikeImageView.isHidden = false
                 likeOrDislikeImageView.image = UIImage(named: "Discard_Icon")
-            } else if distanceFromCenter < -80 {
+            } else if distanceFromCenterInX < -80 {
                 likeOrDislikeImageView.isHidden = false
                 likeOrDislikeImageView.image = UIImage(named: "Like_Icon")
             }
