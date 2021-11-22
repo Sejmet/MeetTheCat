@@ -41,6 +41,12 @@
 		D6DFC3A2274A04EA00DAA6B8 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DFC3A1274A04EA00DAA6B8 /* HomeViewModel.swift */; };
 		D6DFC3A5274A053E00DAA6B8 /* HomeRequestsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DFC3A4274A053E00DAA6B8 /* HomeRequestsManager.swift */; };
 		D6DFC3A7274A06DE00DAA6B8 /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DFC3A6274A06DE00DAA6B8 /* ErrorResponse.swift */; };
+		D6DFC3AB274C2B8F00DAA6B8 /* CatDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DFC3A9274C2B8F00DAA6B8 /* CatDetailViewController.swift */; };
+		D6DFC3AC274C2B8F00DAA6B8 /* CatDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DFC3AA274C2B8F00DAA6B8 /* CatDetailViewController.xib */; };
+		D6DFC3B0274C2C0600DAA6B8 /* CatDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DFC3AE274C2C0600DAA6B8 /* CatDetailTableViewCell.swift */; };
+		D6DFC3B1274C2C0600DAA6B8 /* CatDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D6DFC3AF274C2C0600DAA6B8 /* CatDetailTableViewCell.xib */; };
+		D6DFC3B3274C2E2300DAA6B8 /* CatDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DFC3B2274C2E2300DAA6B8 /* CatDetailViewModel.swift */; };
+		D6DFC3B5274C397E00DAA6B8 /* SomeKindOfBool.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DFC3B4274C397E00DAA6B8 /* SomeKindOfBool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -100,6 +106,12 @@
 		D6DFC3A1274A04EA00DAA6B8 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D6DFC3A4274A053E00DAA6B8 /* HomeRequestsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeRequestsManager.swift; sourceTree = "<group>"; };
 		D6DFC3A6274A06DE00DAA6B8 /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		D6DFC3A9274C2B8F00DAA6B8 /* CatDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewController.swift; sourceTree = "<group>"; };
+		D6DFC3AA274C2B8F00DAA6B8 /* CatDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatDetailViewController.xib; sourceTree = "<group>"; };
+		D6DFC3AE274C2C0600DAA6B8 /* CatDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailTableViewCell.swift; sourceTree = "<group>"; };
+		D6DFC3AF274C2C0600DAA6B8 /* CatDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatDetailTableViewCell.xib; sourceTree = "<group>"; };
+		D6DFC3B2274C2E2300DAA6B8 /* CatDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatDetailViewModel.swift; sourceTree = "<group>"; };
+		D6DFC3B4274C397E00DAA6B8 /* SomeKindOfBool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SomeKindOfBool.swift; sourceTree = "<group>"; };
 		E17C6FDA66BD675A2C04D91E /* Pods_MeetTheCat.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MeetTheCat.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -251,6 +263,7 @@
 		D6DFC3832749C66500DAA6B8 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				D6DFC3A8274C2B7600DAA6B8 /* CatDetail */,
 				D6DFC3842749E08900DAA6B8 /* HomeViewController.swift */,
 				D6DFC3A1274A04EA00DAA6B8 /* HomeViewModel.swift */,
 				D6DFC3852749E08900DAA6B8 /* HomeViewController.xib */,
@@ -290,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				D6DFC39F2749FCE300DAA6B8 /* UIView+Utils.swift */,
+				D6DFC3B4274C397E00DAA6B8 /* SomeKindOfBool.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -309,6 +323,26 @@
 				D6DFC3A4274A053E00DAA6B8 /* HomeRequestsManager.swift */,
 			);
 			path = HomeRequestsManager;
+			sourceTree = "<group>";
+		};
+		D6DFC3A8274C2B7600DAA6B8 /* CatDetail */ = {
+			isa = PBXGroup;
+			children = (
+				D6DFC3AD274C2BF100DAA6B8 /* CatDetailCell */,
+				D6DFC3A9274C2B8F00DAA6B8 /* CatDetailViewController.swift */,
+				D6DFC3B2274C2E2300DAA6B8 /* CatDetailViewModel.swift */,
+				D6DFC3AA274C2B8F00DAA6B8 /* CatDetailViewController.xib */,
+			);
+			path = CatDetail;
+			sourceTree = "<group>";
+		};
+		D6DFC3AD274C2BF100DAA6B8 /* CatDetailCell */ = {
+			isa = PBXGroup;
+			children = (
+				D6DFC3AE274C2C0600DAA6B8 /* CatDetailTableViewCell.swift */,
+				D6DFC3AF274C2C0600DAA6B8 /* CatDetailTableViewCell.xib */,
+			);
+			path = CatDetailCell;
 			sourceTree = "<group>";
 		};
 		DCE0E6E5C689A1D65AE7A493 /* Frameworks */ = {
@@ -426,11 +460,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6DFC30D2749A42B00DAA6B8 /* LaunchScreen.storyboard in Resources */,
+				D6DFC3B1274C2C0600DAA6B8 /* CatDetailTableViewCell.xib in Resources */,
 				D6DFC30A2749A42B00DAA6B8 /* Assets.xcassets in Resources */,
 				D6DFC3922749E2A100DAA6B8 /* Start.storyboard in Resources */,
 				D6DFC38D2749E10C00DAA6B8 /* MainNavigationController.xib in Resources */,
 				D6DFC3872749E08900DAA6B8 /* HomeViewController.xib in Resources */,
 				D6DFC39E2749FAAB00DAA6B8 /* CatCardView.xib in Resources */,
+				D6DFC3AC274C2B8F00DAA6B8 /* CatDetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -500,15 +536,19 @@
 				D6DFC3802749BEC600DAA6B8 /* CatBreed.swift in Sources */,
 				D6DFC3A2274A04EA00DAA6B8 /* HomeViewModel.swift in Sources */,
 				D6DFC3732749A66400DAA6B8 /* CatAPI.swift in Sources */,
+				D6DFC3B0274C2C0600DAA6B8 /* CatDetailTableViewCell.swift in Sources */,
 				D6DFC3822749BEE000DAA6B8 /* CatCategory.swift in Sources */,
 				D6DFC3862749E08900DAA6B8 /* HomeViewController.swift in Sources */,
 				D6DFC3792749A66400DAA6B8 /* APIServers.swift in Sources */,
 				D6DFC39A2749F9EC00DAA6B8 /* SwipeCardsDataSource.swift in Sources */,
 				D6DFC3722749A66400DAA6B8 /* Endpoints.swift in Sources */,
+				D6DFC3B3274C2E2300DAA6B8 /* CatDetailViewModel.swift in Sources */,
 				D6DFC3A5274A053E00DAA6B8 /* HomeRequestsManager.swift in Sources */,
 				D6DFC35E2749A66400DAA6B8 /* ModelFactory.swift in Sources */,
 				D6DFC3982749F96A00DAA6B8 /* CatCardView.swift in Sources */,
 				D6DFC3782749A66400DAA6B8 /* AppEnvironement.swift in Sources */,
+				D6DFC3B5274C397E00DAA6B8 /* SomeKindOfBool.swift in Sources */,
+				D6DFC3AB274C2B8F00DAA6B8 /* CatDetailViewController.swift in Sources */,
 				D6DFC38C2749E10C00DAA6B8 /* MainNavigationController.swift in Sources */,
 				D6DFC3962749F7C100DAA6B8 /* StackViewContainer.swift in Sources */,
 				D6DFC37C2749AD5B00DAA6B8 /* ModalFactory.swift in Sources */,

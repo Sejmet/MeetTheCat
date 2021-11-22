@@ -14,4 +14,5 @@ protocol SwipeCardsDataSource {
 
 protocol SwipeCardsDelegate {
     func swipeDidEnd(on view: CatCardView, liked: Bool)
+    func showMoreInformation(view: CatCardView)
 }

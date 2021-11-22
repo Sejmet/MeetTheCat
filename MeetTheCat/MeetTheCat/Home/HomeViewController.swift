@@ -52,6 +52,13 @@ extension HomeViewController: StackViewContainerProtocol {
     func loadMoreCats() {
         loadCats()
     }
+    
+    func showMoreInformation(card: CatCardView) {
+        let detailVC = CatDetailViewController()
+        detailVC.catBreed = card.dataSource?.breeds?.first ?? CatBreed()
+        detailVC.catImage = card.dataSource?.imageUrl ?? ""
+        navigationController?.pushViewController(detailVC, animated: true)
+    }
 }
 
 /**

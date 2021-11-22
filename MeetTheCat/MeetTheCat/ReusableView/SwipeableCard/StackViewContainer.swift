@@ -11,6 +11,7 @@ protocol StackViewContainerProtocol {
     func didLikeCard(card: CatCardView)
     func didDiscardCard(card: CatCardView)
     func loadMoreCats()
+    func showMoreInformation(card: CatCardView)
 }
 
 class StackViewContainer: UIView, SwipeCardsDelegate {
@@ -48,7 +49,7 @@ class StackViewContainer: UIView, SwipeCardsDelegate {
     }
     
     private func addCardView(cardView: CatCardView, atIndex index: Int) {
-        cardView.delegate = self
+        cardView.swipeCardDelegate = self
         addCardFrame(index: index, cardView: cardView)
         cardViews.append(cardView)
         insertSubview(cardView, at: 0)
@@ -97,5 +98,9 @@ class StackViewContainer: UIView, SwipeCardsDelegate {
         } else {
             stackViewContainerDelegate?.loadMoreCats()
         }
+    }
+    
+    func showMoreInformation(view: CatCardView) {
+        stackViewContainerDelegate?.showMoreInformation(card: view)
     }
 }

@@ -13,20 +13,20 @@ class CatCardView: UIView {
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var roundedView: UIView!
     @IBOutlet weak var catImageView: UIImageView!
-    @IBOutlet weak var catNameLabel: UILabel!
+    @IBOutlet weak var showInformationButton: UIButton!
     @IBOutlet weak var likeOrDislikeImageView: UIImageView!
     
-    var delegate : SwipeCardsDelegate?
+    var swipeCardDelegate: SwipeCardsDelegate?
     
-    var divisor : CGFloat = 0
+    var divisor: CGFloat = 0
     let baseView = UIView()
     
     var dataSource: Cat? {
         didSet {
-            catNameLabel.text = "dataSource?.name"
             guard let imageUrl = URL(string: dataSource?.imageUrl ?? "") else { return }
             catImageView.kf.setImage(with: imageUrl, placeholder: nil, options: nil, completionHandler: nil)
             likeOrDislikeImageView.isHidden = true
+            showInformationButton.isHidden = (dataSource?.breeds?.count ?? 0) == 0
         }
     }
     
@@ -59,6 +59,10 @@ class CatCardView: UIView {
         super.layoutSubviews()
         roundedView.styleForCards()
     }
+    
+    @IBAction func didTapShowInformationButton(_ sender: UIButton) {
+        swipeCardDelegate?.showMoreInformation(view: self)
+    }
 
     func configureTapGesture() {
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture)))
@@ -82,7 +86,7 @@ class CatCardView: UIView {
         case .ended:
             if distanceFromCenter > 100 {
                 //Discard
-                delegate?.swipeDidEnd(on: card, liked: false)
+                swipeCardDelegate?.swipeDidEnd(on: card, liked: false)
                 UIView.animate(withDuration: 0.2) {
                     card.center = CGPoint(x: centerOfParentContainer.x + point.x + 200, y: centerOfParentContainer.y + point.y + 75)
                     card.alpha = 0
@@ -91,7 +95,7 @@ class CatCardView: UIView {
                 return
             } else if distanceFromCenter < -100 {
                 //Like
-                delegate?.swipeDidEnd(on: card, liked: true)
+                swipeCardDelegate?.swipeDidEnd(on: card, liked: true)
                 
                 UIView.animate(withDuration: 0.2) {
                     card.center = CGPoint(x: centerOfParentContainer.x + point.x - 200, y: centerOfParentContainer.y + point.y + 75)

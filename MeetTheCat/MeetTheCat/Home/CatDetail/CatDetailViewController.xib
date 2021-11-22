@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CatDetailViewController" customModule="MeetTheCat" customModuleProvider="target">
+            <connections>
+                <outlet property="catImageView" destination="Bau-Sa-6C8" id="6tQ-ae-e3C"/>
+                <outlet property="detailTableView" destination="GJV-bd-lZM" id="HxK-9d-5dB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Bau-Sa-6C8" userLabel="CatImageView">
+                    <rect key="frame" x="0.0" y="44" width="414" height="310.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="Bau-Sa-6C8" secondAttribute="height" multiplier="4:3" id="aWa-SF-zsp"/>
+                    </constraints>
+                </imageView>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" bounces="NO" bouncesZoom="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="GJV-bd-lZM" userLabel="DetailTableView">
+                    <rect key="frame" x="0.0" y="354.5" width="414" height="507.5"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                </tableView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bau-Sa-6C8" secondAttribute="trailing" id="O7L-oe-iHS"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="GJV-bd-lZM" secondAttribute="trailing" id="OuX-fR-0qa"/>
+                <constraint firstItem="GJV-bd-lZM" firstAttribute="top" secondItem="Bau-Sa-6C8" secondAttribute="bottom" id="ZdD-GU-CFy"/>
+                <constraint firstItem="GJV-bd-lZM" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fB9-KV-42y"/>
+                <constraint firstItem="Bau-Sa-6C8" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="fjx-hR-hn2"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="GJV-bd-lZM" secondAttribute="bottom" id="lDW-kI-tby"/>
+                <constraint firstItem="Bau-Sa-6C8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="lYI-iJ-Vdf"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="117"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
