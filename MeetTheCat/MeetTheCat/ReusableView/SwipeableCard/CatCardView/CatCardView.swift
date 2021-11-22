@@ -17,10 +17,7 @@ class CatCardView: UIView {
     @IBOutlet weak var likeOrDislikeImageView: UIImageView!
     
     var swipeCardDelegate: SwipeCardsDelegate?
-    
-    var divisor: CGFloat = 0
-    let baseView = UIView()
-    
+
     var dataSource: Cat? {
         didSet {
             guard let imageUrl = URL(string: dataSource?.imageUrl ?? "") else { return }

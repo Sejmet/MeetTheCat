@@ -18,9 +18,6 @@ class StackViewContainer: UIView, SwipeCardsDelegate {
     
     var numberOfCardsToShow: Int = 0
     var cardViews: [CatCardView] = []
-    
-    let horizontalInset: CGFloat = 10.0
-    let verticalInset: CGFloat = 10.0
 
     var dataSource: SwipeCardsDataSource? {
         didSet {
