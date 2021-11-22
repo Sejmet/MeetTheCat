@@ -7,20 +7,30 @@
 
 import UIKit
 
-class HomeViewModel: NSObject {
-
-    private let homeRequestsManager: HomeRequestsManager = HomeRequestsManager()
-    var cats: [Cat] = []
-    var myVotedCatsIds: [String] = []
+protocol HomeViewModel {
+    func loadCats(completion: @escaping (_ success: Bool, _ errorMessage: String) -> Void)
+    func voteCat(cat: Cat, vote: Int)
     
-    func searchCats(completion: @escaping (_ success: Bool, _ errorMessage: String) -> Void) {
-        homeRequestsManager.getCats { [weak self] catsArray, errorMessage in
+    var cats: [Cat] { get }
+}
+
+class HomeViewModelImplementation: HomeViewModel {
+
+    var cats: [Cat] = []
+    private let homeRequestsManager: HomeRequestsManager = HomeRequestsManager()
+    private var myVotedCatsIds: [String] = []
+    
+    func loadCats(completion: @escaping (_ success: Bool, _ errorMessage: String) -> Void) {
+        allMyVotes { [weak self] errorMessage in
             guard let sSelf = self else {
                 completion(false, "")
                 return
             }
-            sSelf.cats = catsArray
-            completion(catsArray.count > 0, errorMessage)
+            if errorMessage == "" {
+                sSelf.searchCats(completion: completion)
+            } else {
+                completion(false, errorMessage)
+            }
         }
     }
     
@@ -32,14 +42,28 @@ class HomeViewModel: NSObject {
         }
     }
     
-    func allMyVotes() {
+    private func searchCats(completion: @escaping (_ success: Bool, _ errorMessage: String) -> Void) {
+        homeRequestsManager.getCats { [weak self] catsArray, errorMessage in
+            guard let sSelf = self else {
+                completion(false, "")
+                return
+            }
+            sSelf.cats = catsArray.filter({ cat in
+                return !(sSelf.myVotedCatsIds.contains(cat.catId))
+            })
+            completion(catsArray.count > 0, errorMessage)
+        }
+    }
+    
+    private func allMyVotes(completion: @escaping (_ errorMessage: String) -> Void) {
         homeRequestsManager.myVotedCats { [weak self] myVotedCats, errorMessage in
             guard let sSelf = self else {
                 return
             }
-            sSelf.myVotedCatsIds = myVotedCats.map({ cat in
-                return cat.catId
+            sSelf.myVotedCatsIds = myVotedCats.map({ history in
+                return history.imageId
             })
+            completion(errorMessage)
         }
     }
 }

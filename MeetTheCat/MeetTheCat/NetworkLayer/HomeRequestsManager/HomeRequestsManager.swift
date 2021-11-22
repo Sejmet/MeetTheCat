@@ -35,7 +35,7 @@ class HomeRequestsManager: NSObject {
         }
     }
     
-    public func myVotedCats(completion: @escaping (_ myVotedCats: [Cat], _ errorMessage: String) -> Void) {
+    public func myVotedCats(completion: @escaping (_ myVotedCats: [HistoryResponse], _ errorMessage: String) -> Void) {
         networkService.execute(Endpoints.allMyVotes.resolve()) { (dataResponse: AFDataResponse?, error: AFError?) in
             guard let response = dataResponse else {
                 completion([], "")
@@ -66,37 +66,34 @@ extension HomeRequestsManager {
                 return ([], "")
             }
         case .failure(let error):
-//            guard let data = dataResponse.data, let errorResponse = self.modelFactory.makeErrorResponse(json: data) else {
-//                return (nil, error.localizedDescription)
-//            }
-//            return (nil, errorResponse.message ?? "")
-            return ([], error.localizedDescription)
+            guard let data = dataResponse.data, let errorResponse = self.modelFactory.makeErrorResponse(json: data) else {
+                return ([], error.localizedDescription)
+            }
+            return ([], errorResponse.message ?? "")
         }
         
         return ([], "")
     }
     
-    private func manageResponseVotedCats(dataResponse: AFDataResponse<Any>) -> ([Cat], String) {
+    private func manageResponseVotedCats(dataResponse: AFDataResponse<Any>) -> ([HistoryResponse], String) {
         switch dataResponse.result {
         case .success(let response):
-            guard let responseDic = response as? NSDictionary else {
+            guard let responseDic = response as? [NSDictionary] else {
                 return ([], "")
             }
             do {
                 let jsonData = try JSONSerialization.data(withJSONObject: responseDic, options: .prettyPrinted)
-                //TODO
-                if let cat = self.modelFactory.makeCatObject(json: jsonData) {
-                    return ([], "")
+                if let history = self.modelFactory.makeHistoryResponseArray(json: jsonData) {
+                    return (history, "")
                 }
             } catch {
                 return ([], "")
             }
         case .failure(let error):
-//            guard let data = dataResponse.data, let errorResponse = self.modelFactory.makeErrorResponse(json: data) else {
-//                return (nil, error.localizedDescription)
-//            }
-//            return (nil, errorResponse.message ?? "")
-            return ([], error.localizedDescription)
+            guard let data = dataResponse.data, let errorResponse = self.modelFactory.makeErrorResponse(json: data) else {
+                return ([], error.localizedDescription)
+            }
+            return ([], errorResponse.message ?? "")
         }
         
         return ([], "")

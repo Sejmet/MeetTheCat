@@ -12,7 +12,7 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var catsImagesStackContainer: StackViewContainer!
     @IBOutlet weak var loadingView: UIView!
     
-    var homeVM: HomeViewModel = HomeViewModel()
+    var homeVM: HomeViewModel = HomeViewModelImplementation()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,23 @@ class HomeViewController: UIViewController {
     
     func loadCats() {
         loadingView.isHidden = false
-        homeVM.searchCats { (success: Bool, errorMessage: String) in
-            self.loadingView.isHidden = true
-            self.catsImagesStackContainer.reloadData()
+        homeVM.loadCats { [weak self] (success: Bool, errorMessage: String) in
+            guard let sSelf = self else {
+                return
+            }
+            sSelf.loadingView.isHidden = true
+            if success {
+                sSelf.catsImagesStackContainer.reloadData()
+            } else {
+                sSelf.showAlert(message: errorMessage)
+            }
         }
+    }
+    
+    func showAlert(message: String) {
+        let alertVC = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
+        present(alertVC, animated: true, completion: nil)
     }
 }
 

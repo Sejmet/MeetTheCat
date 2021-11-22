@@ -35,7 +35,18 @@ class ModelFactory: NSObject {
         }
     }
     
-    
+    /**
+     Create HistoryResponse Array
+     */
+    public func makeHistoryResponseArray(json: Data) -> [HistoryResponse]? {
+        do {
+            let result = try JSONDecoder().decode([HistoryResponse].self, from: json)
+            return result
+        } catch {
+            print("Error parsing a HistoryResponse Array", error.localizedDescription)
+            return nil
+        }
+    }
     
     /**
      Create Error Response Object

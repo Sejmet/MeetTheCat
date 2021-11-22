@@ -25,7 +25,7 @@
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ht0-YD-ClL" userLabel="RoundedView">
                     <rect key="frame" x="20" y="64" width="374" height="778"/>
                     <subviews>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ff5-M0-rUS" userLabel="CatImageView">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ff5-M0-rUS" userLabel="CatImageView">
                             <rect key="frame" x="0.0" y="0.0" width="374" height="778"/>
                         </imageView>
                         <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Like_Icon" translatesAutoresizingMaskIntoConstraints="NO" id="6fe-Hk-nSE" userLabel="LikeOrDislikeImageView">
