@@ -51,7 +51,6 @@ class CatCardView: UIView {
         NSLayoutConstraint(item: self, attribute: .bottom, relatedBy: .equal, toItem: contentView, attribute: .bottom, multiplier: 1.0, constant: 0).isActive = true
         
         addPanGestureOnCards()
-        configureTapGesture()
         roundedView.layoutIfNeeded()
     }
     
@@ -63,10 +62,6 @@ class CatCardView: UIView {
     @IBAction func didTapShowInformationButton(_ sender: UIButton) {
         swipeCardDelegate?.showMoreInformation(view: self)
     }
-
-    func configureTapGesture() {
-        addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTapGesture)))
-    }
     
     func addPanGestureOnCards() {
         self.isUserInteractionEnabled = true
@@ -76,7 +71,7 @@ class CatCardView: UIView {
     @objc func handlePanGesture(sender: UIPanGestureRecognizer) {
         let card = sender.view as! CatCardView
         let point = sender.translation(in: self)
-        let centerOfParentContainer = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+        let centerOfParentContainer = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
         
         let movingX = centerOfParentContainer.x + point.x
         let movingY = centerOfParentContainer.y + point.y
@@ -110,14 +105,14 @@ class CatCardView: UIView {
             UIView.animate(withDuration: 0.2) {
                 self.likeOrDislikeImageView.isHidden = true
                 card.transform = .identity
-                card.center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
+                card.center = centerOfParentContainer
                 self.layoutIfNeeded()
             }
         case .changed:
-            if distanceFromCenterInX > 80 {
+            if distanceFromCenterInX > 100 {
                 likeOrDislikeImageView.isHidden = false
                 likeOrDislikeImageView.image = UIImage(named: "Discard_Icon")
-            } else if distanceFromCenterInX < -80 {
+            } else if distanceFromCenterInX < -100 {
                 likeOrDislikeImageView.isHidden = false
                 likeOrDislikeImageView.image = UIImage(named: "Like_Icon")
             }
@@ -127,8 +122,5 @@ class CatCardView: UIView {
         default:
             break
         }
-    }
-    
-    @objc func handleTapGesture(sender: UITapGestureRecognizer) {
     }
 }
