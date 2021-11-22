@@ -9,7 +9,7 @@ import UIKit
 import Alamofire
 
 enum CatAPI: URLRequestBuilder {
-    case imagesSearch
+    case imagesSearch(Int)
     case allMyVotes
     case vote(String, Int)
 }
@@ -30,13 +30,14 @@ extension CatAPI {
 extension CatAPI {
     var parameters: Parameters? {
         switch self {
-        case .imagesSearch:
-            return nil
+        case .imagesSearch(let limit):
+            return ["limit": limit]
         case .allMyVotes:
             return nil
         case .vote(let imageId, let vote):
             return ["image_id": imageId,
-                    "value": vote
+                    "value": vote,
+                    "sub_id": "yo1"
             ]
         }
     }

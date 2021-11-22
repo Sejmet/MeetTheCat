@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="MeetTheCat" customModuleProvider="target">
+            <connections>
+                <outlet property="catsImagesStackContainer" destination="ic1-Hh-Abi" id="I8S-MX-sGI"/>
+                <outlet property="loadingView" destination="1fL-Ed-cn5" id="QIv-Zh-nNL"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdk-dQ-bkB">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ic1-Hh-Abi" userLabel="CatsImagesContainer" customClass="StackViewContainer" customModule="MeetTheCat" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1fL-Ed-cn5" userLabel="LoadingView">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="doK-T0-2fl">
+                                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="doK-T0-2fl" firstAttribute="centerX" secondItem="1fL-Ed-cn5" secondAttribute="centerX" id="BXq-Tm-fJx"/>
+                                <constraint firstItem="doK-T0-2fl" firstAttribute="centerY" secondItem="1fL-Ed-cn5" secondAttribute="centerY" id="Lb3-df-4KG"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="1fL-Ed-cn5" secondAttribute="trailing" id="0za-92-M60"/>
+                        <constraint firstItem="ic1-Hh-Abi" firstAttribute="leading" secondItem="bdk-dQ-bkB" secondAttribute="leading" id="fNr-aw-7Uz"/>
+                        <constraint firstAttribute="bottom" secondItem="1fL-Ed-cn5" secondAttribute="bottom" id="h3G-0y-yfZ"/>
+                        <constraint firstItem="1fL-Ed-cn5" firstAttribute="top" secondItem="bdk-dQ-bkB" secondAttribute="top" id="hsz-VM-60t"/>
+                        <constraint firstItem="1fL-Ed-cn5" firstAttribute="leading" secondItem="bdk-dQ-bkB" secondAttribute="leading" id="jqt-Nz-6eV"/>
+                        <constraint firstAttribute="trailing" secondItem="ic1-Hh-Abi" secondAttribute="trailing" id="rg8-8Z-l6E"/>
+                        <constraint firstAttribute="bottom" secondItem="ic1-Hh-Abi" secondAttribute="bottom" id="swu-os-EBb"/>
+                        <constraint firstItem="ic1-Hh-Abi" firstAttribute="top" secondItem="bdk-dQ-bkB" secondAttribute="top" id="w98-Ut-whc"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="bdk-dQ-bkB" secondAttribute="bottom" id="WbE-1G-4oC"/>
+                <constraint firstItem="bdk-dQ-bkB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="c9L-yq-be8"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bdk-dQ-bkB" secondAttribute="trailing" id="hc9-Vi-xfU"/>
+                <constraint firstItem="bdk-dQ-bkB" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="xdd-a5-oBA"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="103"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -8,7 +8,7 @@
 import UIKit
 
 public enum Endpoints {
-    case imagesSearch
+    case imagesSearch(Int)
     case allMyVotes
     case vote(String, Int)
 }
@@ -16,8 +16,8 @@ public enum Endpoints {
 public extension Endpoints {
     func resolve() -> URLRequestBuilder {
         switch self {
-        case .imagesSearch:
-            return CatAPI.imagesSearch
+        case .imagesSearch(let limit):
+            return CatAPI.imagesSearch(limit)
         case .allMyVotes:
             return CatAPI.allMyVotes
         case .vote(let imageId, let vote):
